@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f766e" />
+      <stop offset="40%" stop-color="#0e7490" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="coatGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+    <linearGradient id="scrubGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d9488" />
+      <stop offset="100%" stop-color="#0f766e" />
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="30" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="1000" fill="url(#bgGrad)" />
+
+  <!-- Subtle ambient decorative glow rings -->
+  <circle cx="400" cy="380" r="260" fill="#14b8a6" opacity="0.15" filter="url(#softGlow)" />
+  <circle cx="400" cy="380" r="220" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-dasharray="8 8" opacity="0.4" />
+  <circle cx="400" cy="380" r="240" fill="none" stroke="#38bdf8" stroke-width="1.5" opacity="0.25" />
+
+  <!-- Doctor Silhouette Group -->
+  <g transform="translate(0, 40)">
+    <!-- Head & Hair Silhouette -->
+    <ellipse cx="400" cy="270" rx="90" ry="110" fill="#f8fafc" opacity="0.95" />
+    
+    <!-- Hair stylized outline -->
+    <path d="M 310,270 C 305,200 340,160 400,160 C 460,160 495,200 490,270 C 495,240 470,180 400,180 C 330,180 305,240 310,270 Z" fill="#0f172a" opacity="0.8" />
+    
+    <!-- Face gentle contours -->
+    <path d="M 335,280 Q 400,370 465,280 Q 400,400 335,280 Z" fill="#e2e8f0" opacity="0.4" />
+
+    <!-- Neck -->
+    <rect x="375" y="360" width="50" height="80" rx="10" fill="#f1f5f9" />
+
+    <!-- Scrubs collar / Inner shirt -->
+    <polygon points="400,430 360,400 440,400" fill="url(#scrubGrad)" />
+    <path d="M 360,400 L 400,455 L 440,400 L 450,470 L 350,470 Z" fill="url(#scrubGrad)" />
+
+    <!-- White Medical Doctor Coat / Lapels -->
+    <path d="M 230,550 C 240,450 310,410 360,400 L 400,560 L 340,880 C 270,880 220,750 230,550 Z" fill="url(#coatGrad)" />
+    <path d="M 570,550 C 560,450 490,410 440,400 L 400,560 L 460,880 C 530,880 580,750 570,550 Z" fill="url(#coatGrad)" />
+
+    <!-- Stethoscope around neck -->
+    <path d="M 350,410 C 350,520 370,590 390,620 C 395,628 405,628 410,620 C 430,590 450,520 450,410" fill="none" stroke="#0ea5e9" stroke-width="8" stroke-linecap="round" />
+    <!-- Stethoscope chest piece -->
+    <circle cx="400" cy="640" r="18" fill="#38bdf8" stroke="#ffffff" stroke-width="4" />
+    <circle cx="400" cy="640" r="8" fill="#0f172a" />
+  </g>
+
+  <!-- Stylized badge overlay at bottom -->
+  <rect x="120" y="820" width="560" height="120" rx="20" fill="#0f172a" fill-opacity="0.85" stroke="#14b8a6" stroke-width="2" />
+  <text x="400" y="865" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="1">
+    DR. SRINIJA KUMMARAGANTI
+  </text>
+  <text x="400" y="905" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="500" fill="#2dd4bf" text-anchor="middle" letter-spacing="0.5">
+    MBBS, MD (Pulmonology), FIP, DAA (CMC Vellore)
+  </text>
+
+  <!-- Corner watermark indicator -->
+  <rect x="250" y="50" width="300" height="36" rx="18" fill="#0f172a" fill-opacity="0.7" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="400" y="74" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#93c5fd" text-anchor="middle">
+    PHOTO COMING SOON
+  </text>
+</svg>
+
