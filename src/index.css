@@ -2,66 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Colour tokens. Hex values for reference:
+ * air #F3F6F8 · paper #FFFFFF · ink #13283B · ink-soft #2C3F4F · slate #4B5D6B
+ * pleura (accent) #0E6B73 · mist #DCE9EC · line #D5DFE4 · input #B7C6CE
+ */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --background: 204 29% 96%;
+    --foreground: 209 51% 15%;
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card-foreground: 209 51% 15%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
-    --radius: 0.625rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --popover-foreground: 209 51% 15%;
+    --primary: 185 78% 25%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 191 26% 89%;
+    --secondary-foreground: 209 51% 15%;
+    --muted: 204 29% 96%;
+    --muted-foreground: 206 18% 36%;
+    --accent: 191 26% 89%;
+    --accent-foreground: 209 51% 15%;
+    --destructive: 0 72% 42%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 200 20% 86%;
+    --input: 201 18% 76%;
+    --ring: 185 78% 25%;
+    --radius: 0.5rem;
+    --ink-soft: 208 29% 24%;
   }
 }
 
@@ -69,7 +37,90 @@
   * {
     @apply border-border;
   }
+  html {
+    scroll-padding-top: 5rem;
+  }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background font-serif text-foreground antialiased;
+    font-optical-sizing: auto;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  button,
+  input,
+  select,
+  textarea,
+  label,
+  nav,
+  summary,
+  table {
+    @apply font-sans;
+  }
+  :focus-visible {
+    outline: 3px solid hsl(var(--ring));
+    outline-offset: 3px;
+  }
+  details > summary {
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-6;
+  }
+  .heading-xl {
+    @apply font-sans text-[2.5rem] font-extrabold leading-[1.02] tracking-[-0.035em] sm:text-5xl lg:text-[4.25rem];
+  }
+  .heading-lg {
+    @apply font-sans text-3xl font-extrabold leading-[1.1] tracking-[-0.02em] sm:text-[2.6rem];
+  }
+  .heading-md {
+    @apply font-sans text-xl font-bold leading-snug;
+  }
+  .lede {
+    @apply text-lg leading-relaxed text-ink-soft sm:text-xl;
+  }
+  .reading {
+    @apply max-w-[38em] text-[1.0625rem] leading-[1.7] text-ink-soft;
+  }
+}
+
+/* The spirometry curve draws itself once on page load. */
+.breath {
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  animation: breath-draw 2.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.4s forwards;
+}
+.breath-late {
+  opacity: 0;
+  animation: breath-fade 0.6s ease-out 2.8s forwards;
+}
+@keyframes breath-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes breath-fade {
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .breath {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .breath-late {
+    animation: none;
+    opacity: 1;
+  }
+  html {
+    scroll-behavior: auto;
   }
 }
